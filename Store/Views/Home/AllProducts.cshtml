@@ -1,0 +1,64 @@
+﻿@using Store.Models.Entities
+
+@model List<Product>
+@{
+    int a = 1;
+}
+
+
+<div style="text-align:center;">
+    <h1 >Products</h1>
+
+<table class="zigzag" >
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+     
+    </tr>
+        @foreach (var product in Model)
+        {
+                                   <tr>
+                                       <td text-align="center">@a</td>
+                                       <td text-align="center">@product.Name</td>
+                                           <td text-align="center">@product.Mark.Name</td>
+                @{
+                    a++;
+                }
+                                   </tr> 
+        }
+</table>
+
+<input  style="width: 820px" type="button" value="Menu" onclick="location.href='@Url.Action("Menu")'" />
+
+
+</div>
+
+
+<style>
+    body{
+    background:#023047;
+}
+   input[type=button]{
+        background:orange;
+        padding:20px;
+        margin-top:40px;
+    }
+table {  
+  margin-left: auto;
+  margin-right: auto;
+}
+th {  
+ width:200px;
+    color:orange;
+}
+ h1{
+        color:orange;
+        padding-top:150px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+     td{
+        color:orange;
+
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>

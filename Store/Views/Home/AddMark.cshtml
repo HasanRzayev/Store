@@ -1,0 +1,47 @@
+﻿@using Store.Models.Entities
+
+@model Mark
+
+
+
+
+
+<div style="text-align:center;">
+      <h1 >Add</h1>
+    <form asp-action="AddMark" asp-controller="Home" method="post">
+         <input style="width: 200px" type="text" asp-for="Name" placeholder="Mark Name" />
+    
+         <input  style="width: 200px" value="ADD" type="submit" />
+
+    </form>
+
+<input  style="width: 820px" type="button" value="Menu" onclick="location.href='@Url.Action("Menu")'" />
+
+</div>
+
+<style>
+    body{
+    background:#023047;
+}
+   input[type=button]{
+        background:orange;
+        padding:20px;
+        margin-top:40px;
+    }
+    input[type=text],input[type=submit]{
+        background:#457b9d;
+        padding:20px;
+        margin-top:40px;
+        color: black;
+    }
+    ::placeholder {
+  color: black;
+  opacity: 1; 
+
+}
+ h1{
+        color:orange;
+        padding-top:150px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
