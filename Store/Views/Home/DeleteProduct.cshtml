@@ -1,37 +1,40 @@
 ﻿@using Store.Models.Entities
-
-@model List<Mark> 
-
-
+@model List<Product>
 @{
+
+
     int a = 1;
 }
 
 
+
 <div style="text-align:center;">
-    <h1 >Products</h1>
+    <h1 >Delete</h1>
+
+  <form asp-action="DeleteProduct"  asp-controller="Home" method="post">
+         <input style="width:  200px" name="number" type="number"  placeholder="Enter Number" />
+         <input  style="width: 200px" value="remove"  type="submit" />
+ </form>
+
 
 <table class="zigzag" >
     <tr>
         <th>Id</th>
         <th>Name</th>
-     
     </tr>
         @foreach (var product in Model)
         {
-             <tr>
-                   <td text-align="center">@a</td>
-                   <td text-align="center">@product.Name</td>
+                                       <tr>
+                                           <td text-align="center">@a</td>
+                                           <td text-align="center">@product.Name</td>
 
                 @{
                     a++;
                 }
-                </tr> 
+                                       </tr> 
         }
 </table>
-
 <input  style="width: 820px" type="button" value="Menu" onclick="location.href='@Url.Action("Menu")'" />
-
 
 </div>
 
@@ -48,7 +51,9 @@
 table {  
   margin-left: auto;
   margin-right: auto;
+
 }
+
 th {  
  width:200px;
     color:orange;
@@ -63,4 +68,5 @@ th {
 
         font-family: Arial, Helvetica, sans-serif;
     }
+
 </style>

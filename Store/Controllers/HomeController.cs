@@ -53,15 +53,19 @@ namespace Store.Controllers
         
             return View(baza.Marks.ToList());
         }
-        public IActionResult AllProducts()
+        public  IActionResult AllProducts()
         {
-
+            var model = baza.Marks.Include(a => a.Products).ToList();
             return View(baza.Products.ToList());
         }
 
-        public IActionResult DeleteMark()
+        public IActionResult DeleteMark() 
         {
             return View(baza.Marks.ToList());
+        }
+        public IActionResult DeleteProduct()
+        {
+            return View(baza.Products.ToList());
         }
 
         public IActionResult Menu()
@@ -88,14 +92,14 @@ namespace Store.Controllers
 
                 Product lazim =new Product();
                 lazim.Name=product.Name;
-            
+                lazim.mark_id = product.mark_id;
                 baza.Products.Add(lazim);
                 
              
-                lazim.mark_id = product.mark_id;
-                lazim.Mark= baza.Marks.FirstOrDefault(x => x.Id == lazim.mark_id);
+               
+                
                 baza.SaveChanges();
-                baza.Update(baza.Products.FirstOrDefault(d => d.Name == lazim.Name));
+                //baza.Update(baza.Products.FirstOrDefault(d => d.Name == lazim.Name));
                 baza.SaveChanges();
 
             }
@@ -113,6 +117,19 @@ namespace Store.Controllers
 
             }
             return RedirectToAction("AllMarks");
+        }
+        [HttpPost, ActionName("DeleteProduct")]
+        public IActionResult DeleteProduct(int number)
+        {
+            if (number - 1 >= 0 && number - 1 < baza.Marks.Count())
+            {
+
+
+                baza.Products.Remove(baza.Products.ToList()[number - 1]);
+                baza.SaveChanges();
+
+            }
+            return RedirectToAction("AllProducts");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
